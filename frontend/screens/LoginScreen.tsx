@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet, TextInput, Image, KeyboardAvoidingView, TouchableOpacity, Pressable, ImageBackground } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
@@ -7,6 +7,7 @@ import { Text, View} from '../components/Themed';
 import { RootStackScreenProps } from '../types';
 import { FontDisplay } from "expo-font";
 import { loadOptions } from "@babel/core";
+import { UserContext } from "../contexts/UserContext";
 
 const initialState = {
   react: false,
@@ -33,7 +34,7 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
   }
   // const [text, onChangeText] = React.useState("Useless Text");
   // const [number, onChangeNumber] = React.useState(null);
-
+   const {setTokens} = useContext(UserContext)
   return (
     <ImageBackground source={require('../assets/images/Salle-de-soins-dentaires.png')} resizeMode="cover" style={styles.image}>
     <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -51,8 +52,10 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
             style={styles.input}
             onChangeText={text => setPassword(text)}
             value={password}
+            secureTextEntry
             placeholder="Password"
             keyboardType="numeric"
+            
           />
           
           <View style={styles.option}>
@@ -66,8 +69,8 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
 
           <View style={styles.buttonContainer}>
           <TouchableOpacity
-            onPress={() => { }}
-            style={styles.button}
+             onPress={()=>{setTokens('', '',); navigation.navigate("Main")}}
+             style={styles.button}
           >
             <Text style={styles.buttonText}>Sign In</Text>          
           </TouchableOpacity>
@@ -77,7 +80,7 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
         </View >
 
         <View style={styles.inputContainer}>
-          <Pressable>
+          <Pressable onPress={navigation.navigate("Login")}>
             <Text>New Around here ?</Text>
           </Pressable>
           <Pressable>
@@ -218,14 +221,15 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   option: {
-    alignSelf: 'flex-start',
-    marginLeft: 30,
-
+    alignContent: 'flex-start',
+    alignSelf: 'center',
+    width: '50%'
   },
   language: {
     flexDirection: 'row',
     marginVertical: 10,
-    marginLeft: 40,
+    //marginLeft: 40,
+    alignSelf: 'center',
   },
   buttonContainer: {
     width: '60%',

@@ -39,14 +39,14 @@ export function Text(props: TextProps) {
   return <DefaultText style={[{ color }, style]} {...otherProps} />;
 }
 
-export function TextInput(props: TextInputProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
-  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
-  const theme = useColorScheme();
-  const selectedTheme= theme=='light'?'dark': 'light';
+// export function TextInput(props: TextInputProps) {
+//   const { style, lightColor, darkColor, ...otherProps } = props;
+//   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+//   const theme = useColorScheme();
+//   const selectedTheme= theme=='light'?'dark': 'light';
   
-  return <DefaultText style={[{ color }, style]} {...otherProps} />;
-}
+//   return <DefaultText style={[{ color }, style]} {...otherProps} />;
+// }
 
 export function View(props: ViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;

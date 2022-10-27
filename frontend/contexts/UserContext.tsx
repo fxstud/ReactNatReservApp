@@ -9,7 +9,7 @@ const initialUserState = {
 
 const userContextWrapper = (component?: React.Component) => ({
   ...initialUserState,
-  setTokens: (token: string, refeshToken: string) => {
+  setTokens: (token: string , refeshToken: string ) => {
     initialUserState.token = token;
     initialUserState.refeshToken = refeshToken;
     localStorage.setItem("token", token)

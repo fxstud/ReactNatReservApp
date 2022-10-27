@@ -33,6 +33,10 @@ const linking: LinkingOptions<RootStackParamList> = {
       Inscription: 'inscription',
       Modal: 'modal',
       NotFound: '*',
+      Appointment: 'appointment',
+      Contact: 'contact',
+      Agenda: 'agenda',
+      ProfileUser: 'profileuser',
     },
   },
 };

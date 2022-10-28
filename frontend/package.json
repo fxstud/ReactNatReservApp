@@ -15,7 +15,18 @@
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
     "@expo/webpack-config": "^0.17.0",
+<<<<<<< HEAD
+    "@fortawesome/free-brands-svg-icons": "^6.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@nestjs/config": "^2.2.0",
+    "@nestjs/core": "^9.1.6",
+    "@nestjs/passport": "^9.0.0",
+    "@react-native-picker/picker": "^2.4.8",
+=======
     "@react-native-community/checkbox": "^0.5.12",
+>>>>>>> fx
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",

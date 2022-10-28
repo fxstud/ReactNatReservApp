@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet, TextInput, Image, KeyboardAvoidingView, TouchableOpacity, Pressable, ImageBackground } from 'react-native';
+import { Platform, StyleSheet, TextInput, Image, KeyboardAvoidingView, TouchableOpacity, Pressable, ImageBackground, Button } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
 import EmojiSelector from 'react-native-emoji-selector'
 import { Text, View} from '../components/Themed';
@@ -69,7 +69,7 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
 
           <View style={styles.buttonContainer}>
           <TouchableOpacity
-             onPress={()=>{setTokens('', '',); navigation.navigate("Main")}}
+             onPress={()=>{setTokens(email, password); navigation.navigate("Main")}}
              style={styles.button}
           >
             <Text style={styles.buttonText}>Sign In</Text>          
@@ -77,17 +77,21 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
 
           </View>
 
+
         </View >
 
         <View style={styles.inputContainer}>
-          <Pressable onPress={navigation.navigate("Login")}>
-            <Text>New Around here ?</Text>
-          </Pressable>
-          <Pressable>
-            <Text>Forgot password ?</Text>
-          </Pressable>
-          
+        <TouchableOpacity
+            onPress={() => navigation.push('Inscription')}
+            style={styles.buttonOutline}
+          >
+            <Text style={styles.buttonOutlineText}>New Around here ?</Text>             
+          </TouchableOpacity>         
         </View>
+        
+          
+          
+        
         
       
     </KeyboardAvoidingView>
@@ -184,6 +188,7 @@ const styles = StyleSheet.create({
     padding: '50px',
     borderRadius: '10px',
     borderWidth: '1px',
+    opacity: '0.8',
   
     
   },
@@ -250,7 +255,7 @@ const styles = StyleSheet.create({
   buttonOutline: {
     backgroundColor: 'white',
     
-    borderColor: '#0782F9',
+  borderColor: 'white',
     borderWidth: 2,
   },
   buttonText:{
@@ -259,7 +264,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   buttonOutlineText:{
-    color: '#0782F9',
+    color: 'black',
     fontWeight: '700',
     fontSize: 16,
   },

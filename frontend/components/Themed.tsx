@@ -22,7 +22,7 @@ export function useThemeColor(
   }
 }
 
-type ThemeProps = {
+type ThemeProps = {  
   lightColor?: string;
   darkColor?: string;
 };
@@ -30,6 +30,7 @@ type ThemeProps = {
 export type TextProps = ThemeProps & DefaultText['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
 export type ButtonProps= ThemeProps & PressableProps & { text: string};
+export type TextInputProps= ThemeProps & DefaultText['props'];
 
 export function Text(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
@@ -37,6 +38,15 @@ export function Text(props: TextProps) {
 
   return <DefaultText style={[{ color }, style]} {...otherProps} />;
 }
+
+// export function TextInput(props: TextInputProps) {
+//   const { style, lightColor, darkColor, ...otherProps } = props;
+//   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+//   const theme = useColorScheme();
+//   const selectedTheme= theme=='light'?'dark': 'light';
+  
+//   return <DefaultText style={[{ color }, style]} {...otherProps} />;
+// }
 
 export function View(props: ViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
@@ -63,10 +73,12 @@ export function Button(props: ButtonProps) {
   const theme = useColorScheme();
   const selectedTheme= theme=='light'?'dark': 'light';
   
-  return <Pressable style={[{ backgroundColor: Colors[selectedTheme].background,
+  return (<Pressable style={[{ backgroundColor: Colors[selectedTheme].background,
                               margin: 10, padding:10, paddingHorizontal:20, borderRadius:10}]} {...otherProps}>
             <Text style={{color: Colors[selectedTheme].text}}>{text}</Text>
-          </Pressable>;
+          </Pressable>);
 }
+
+
 
 

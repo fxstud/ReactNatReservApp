@@ -1,12 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import {useState, useContext} from 'react';
 import { Platform, StyleSheet, ImageBackground, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native';
-
+import { verifEmail, verifFirstname, verifName, verifPhone, verifyPassword } from '../helpers/CompteHelpers';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
 import { RootStackScreenProps } from '../types';
-import { UserContext } from "../contexts/UserContext";
+import { CompteContext } from "../contexts/CompteContext";
+import { UserContext } from '../contexts/UserContext';
+
+export type CompteProps = {
+  firstname: string;
+  lastname: string;
+  phone: string;
+  email: string;
+};
 
 export default function InscriptionScreen({ navigation }: RootStackScreenProps<'Inscription'>) {
   const [firstname, setFirstname] = useState('')
@@ -14,8 +22,31 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [password, setPassword] = useState('')
+  const [errors, setErrors]= useState(Array<String>())
 
-  const {setTokens} = useContext(UserContext)
+  const {addCompte} = useContext(CompteContext)
+  const {tokens} = useContext(UserContext)
+  
+  const saveContact= ()=>{
+    let errorFirstname= verifFirstname(firstname),
+    errorName= verifName(lastname),
+    errorPhone= verifPhone(phone),
+    errorEmail= verifEmail(email);
+    let errorsForm= [];
+    if(errorName!="") errorsForm.push(errorName);
+    if(errorFirstname!="") errorsForm.push(errorFirstname);
+    if(errorPhone!="") errorsForm.push(errorPhone);
+    if(errorEmail!="") errorsForm.push(errorEmail);
+    setErrors(errorsForm);
+    if(errorsForm.length==0){
+        addCompte({firstname: firstname, lastname: lastname, email:email, phone:phone})
+        setFirstname("")
+        setLastname("")
+        setEmail("")
+        setPhone("")
+    }
+}
+
   return (
     
     <ImageBackground source={require('../assets/images/Salle-de-soins-dentaires.png')} resizeMode="cover" style={styles.image}>
@@ -70,7 +101,7 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
 
 <View style={styles.buttonContainer}>
           <TouchableOpacity
-             onPress={()=>{setTokens(email, password); navigation.navigate("Main")}}
+             onPress={()=>{addCompte(email,); navigation.navigate("Main")}}
              style={styles.button}
           >
             <Text style={styles.buttonText}>Sign In</Text>          

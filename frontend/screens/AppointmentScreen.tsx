@@ -8,7 +8,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+//import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 export default function AppointmentScreen({ navigation }: RootStackScreenProps<'Appointment'>) {
@@ -42,12 +42,12 @@ export default function AppointmentScreen({ navigation }: RootStackScreenProps<'
       <View style={styles.inputLine}>
         <Text style={styles.labelText}>Date:</Text>
         <TextInput  style={styles.textInput}
-                    value="27-10-2022"/>
+                    placeholder="28-10-2022"/>
       </View>
       <View style={styles.inputLine}>
         <TouchableHighlight style={styles.button}
 >
-            <Text style={styles.buttonText}>Ajouter</Text>
+            <Text style={styles.buttonText}>Ajouter</Text> 
           </TouchableHighlight>
       </View>
       </form>
@@ -77,7 +77,9 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderBottomWidth:2,
-    flex:1
+    flex:1,
+    textAlign: 'center'
+    
   },
   inputLine: {
     flexDirection:'row',
@@ -85,7 +87,8 @@ const styles = StyleSheet.create({
     flex:1
   },
   button:{
-    backgroundColor: Colors.light.tint,
+    //backgroundColor: Colors.light.tint,
+    backgroundColor: '#eee',
     padding:10,
     marginTop:20
   },

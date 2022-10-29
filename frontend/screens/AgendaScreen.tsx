@@ -8,7 +8,7 @@ import { RootStackScreenProps, RootTabScreenProps } from '../types';
 export default function AgendaScreen({ navigation }: RootTabScreenProps<'Agenda'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Article</Text>
+      <Text style={styles.title}>calendier (traces à retrouver au sein du groupe )</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
     </View>
   );

@@ -8,7 +8,7 @@ import { RootStackScreenProps, RootTabScreenProps } from '../types';
 export default function ContactScreen({ navigation }: RootTabScreenProps<'Contact'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Article</Text>
+      <Text style={styles.title}>Liste de contact (à implémenter par la suite)</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
     </View>
   );

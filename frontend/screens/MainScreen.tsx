@@ -10,36 +10,76 @@ import { RootStackScreenProps } from '../types';
 export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>) {
   const {token} = React.useContext(UserContext);
   const {removeTokens} = React.useContext(UserContext);
-  // navigation.navigate("Article", { id: "1"});
-  return (
-    
-    <ImageBackground source={require('../assets/images/visuel-dentiste.png')} resizeMode="cover" style={styles.image}>
-      <KeyboardAvoidingView style={styles.container} behavior="padding">
-        
-      <View style={styles.imgtxtContainer}>
-        <Image
-          style={styles.tinyImg}
-          source={{
-            uri: 'https://apigroupe.com/wp-content/uploads/2018/09/Visite_routine_dentiste_nettoyage_Laval-1.jpg',
-          }}
-        />
-        <Text style={styles.imgtxt}>Comment consulter en toute simplicité ?   Ne perdez plus votre temps et inscrivez vous chez nous dans la joie et le bonheur</Text>       
-      </View >
+  
+  // NE MARCHE PAS CAR COMPLIQUE EN TYPE SCRIPT 
 
-        {token?
-          <TouchableOpacity
-          onPress={()=>{removeTokens(); navigation.navigate("Login")}}
-          style={styles.button}
-          >
-          <Text style={styles.buttonText}>Sign Out</Text>          
-          </TouchableOpacity>
-         :<TouchableOpacity
-           onPress={()=>{navigation.navigate("Login")}}
-           style={styles.button}
-          >
-          <Text style={styles.buttonText}>return Home</Text>          
-          </TouchableOpacity>}
+  // const Token = ()  => {
+  //   if (token) {
+  //     return ( 
+
+  //         <View style={styles.imgtxtContainer}>
+  //         <Image
+  //           style={styles.tinyImg}
+  //           source={{
+  //             uri: 'https://apigroupe.com/wp-content/uploads/2018/09/Visite_routine_dentiste_nettoyage_Laval-1.jpg',
+  //           }}
+  //         />
+  //         <Text style={styles.imgtxt}>Comment consulter en toute simplicité ?   Ne perdez plus votre temps et inscrivez vous chez nous dans la joie et le bonheur</Text>
+  //         <TouchableOpacity
+  //         onPress={()=>{removeTokens();}}
+  //         style={styles.button}
+  //         >
+  //         <Text style={styles.buttonText}>Sign Out</Text>          
+  //         </TouchableOpacity>       
+  //       </View >
+        
+
+        
+  //     )
+  //   }
+  //   else {
+  //   <TouchableOpacity
+  //         onPress={()=>{navigation.navigate("Login")}}
+  //         style={styles.button}
+  //       >
+  //       <Text style={styles.buttonText}>return Home</Text>          
+  //   </TouchableOpacity>
+  //   }
+  // }
+    
+
+  return (
+    <ImageBackground source={require('../assets/images/visuel-dentiste.png')} resizeMode="cover" style={styles.image}>
+      {token?
+      <KeyboardAvoidingView style={styles.container} behavior="padding">         
+
+            <View style={styles.imgtxtContainer}>
+              <Image
+              style={styles.tinyImg}
+              source={{
+                uri: 'https://apigroupe.com/wp-content/uploads/2018/09/Visite_routine_dentiste_nettoyage_Laval-1.jpg',
+              }}
+              />
+              <Text style={styles.imgtxt}>Comment consulter en toute simplicité ?   Ne perdez plus votre temps et inscrivez vous chez nous dans la joie et le bonheur</Text>
+              </View>
+            <TouchableOpacity
+              onPress={()=>{removeTokens()}}
+              style={styles.button}
+            >
+              <Text style={styles.buttonText}>Sign Out</Text>          
+            </TouchableOpacity>
+      
       </KeyboardAvoidingView>
+         :
+      <KeyboardAvoidingView style={styles.container} behavior="padding">
+        <TouchableOpacity
+          onPress={()=>{navigation.navigate("Login")}}
+          style={styles.button}
+        >
+        <Text style={styles.buttonText}>return Home</Text>          
+        </TouchableOpacity>
+      </KeyboardAvoidingView>    
+      }
     </ImageBackground>
   );
 }
@@ -49,6 +89,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    opacity: '0.8',
   },
   title: {
     fontSize: 20,
@@ -65,8 +106,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
-    marginTop: '20px',
-    marginBottom: '20px',
+    marginTop: '200px'
   },
   buttonText:{
     color: 'white',
@@ -85,6 +125,9 @@ const styles = StyleSheet.create({
     borderWidth: '1px',
     opacity: '1.0',
      
+  },
+  imgtxtContains:{
+    opacity: '1.0',
   },
   tinyImg: {
     paddingTop: '2px',

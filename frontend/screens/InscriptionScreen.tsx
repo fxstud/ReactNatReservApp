@@ -25,9 +25,9 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
   const [errors, setErrors]= useState(Array<String>())
 
   const {addCompte} = useContext(CompteContext)
-  const {tokens} = useContext(UserContext)
   
-  const saveContact= ()=>{
+  // PARTIE DE CODE QUI NE FONCTIONNE PAS ENCORE (SOUCI DE TIMING)
+  const registerCompte= ()=>{
     let errorFirstname= verifFirstname(firstname),
     errorName= verifName(lastname),
     errorPhone= verifPhone(phone),
@@ -44,11 +44,13 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
         setLastname("")
         setEmail("")
         setPhone("")
+        
     }
 }
 
   return (
-    
+  
+
     <ImageBackground source={require('../assets/images/Salle-de-soins-dentaires.png')} resizeMode="cover" style={styles.image}>
     <KeyboardAvoidingView style={styles.container} behavior="padding">
     <View style={styles.inputContainer}>
@@ -99,14 +101,13 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
             secureTextEntry     
           />
 
-<View style={styles.buttonContainer}>
-          <TouchableOpacity
-             onPress={()=>{addCompte(email,); navigation.navigate("Main")}}
-             style={styles.button}
-          >
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity
+              onPress={()=>{registerCompte; navigation.navigate("Login")}}
+              style={styles.button}
+            >
             <Text style={styles.buttonText}>Sign In</Text>          
           </TouchableOpacity>
-
           </View>
       </View>
 

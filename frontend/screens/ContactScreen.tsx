@@ -116,3 +116,35 @@ function scale(arg0: number): any | string | number | undefined {
   throw new Error('Function not implemented.');
 }
 
+import { StatusBar } from 'expo-status-bar';
+import { Platform, StyleSheet } from 'react-native';
+
+import EditScreenInfo from '../components/EditScreenInfo';
+import { Text, View } from '../components/Themed';
+import { RootStackScreenProps, RootTabScreenProps } from '../types';
+
+export default function ContactScreen({ navigation }: RootTabScreenProps<'Contact'>) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Liste de contact (à implémenter par la suite)</Text>
+      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  separator: {
+    marginVertical: 30,
+    height: 1,
+    width: '80%',
+  },
+});

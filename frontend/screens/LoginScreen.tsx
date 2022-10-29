@@ -18,18 +18,12 @@ const initialState = {
 export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [languages, setLanguages] = useState('[]');
+  const [me, setMe] = useState('[]');
   const option = 'Remember Me';
 
   function pickMe(selectedMe: any){
-    // useless
-    // const index = languages.findIndex(language => language === selectedLanguage)
 
-    // if(languages.includes(selectedLanguage  )){
-    //   setLanguages(languages.filter(language=> language !== selectedLanguage))
-    //   return;
-    // }
-    setLanguages(languages => languages.concat(selectedMe));
+    setMe(languages => languages.concat(selectedMe));
   }
   // const [text, onChangeText] = React.useState("Useless Text");
   // const [number, onChangeNumber] = React.useState(null);
@@ -53,14 +47,12 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
           value={password}
           secureTextEntry
           placeholder="Password"
-          keyboardType="numeric"
-          
-        />
-        
+          keyboardType="numeric"         
+        />      
         <View style={styles.option}>
             <View key={option} style={styles.language}>
               <TouchableOpacity style={styles.checkbox} onPress={() => pickMe(option)}>
-                {languages.includes(option) && <Text style={styles.check}>☑️</Text>}
+                {me.includes(option) && <Text style={styles.check}>☑️</Text>}
               </TouchableOpacity>
               <Text style={styles.languageName}>{option}</Text>
             </View>         
@@ -98,9 +90,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    // backgroundColor: 'white' Si je veux mettre en blanc
-    
+    justifyContent: 'center',   
   },
   image: {
     flex: 1,
@@ -116,34 +106,21 @@ const styles = StyleSheet.create({
     width: 'inherit',
     borderWidth: '1px',
   },
-  // tinyLogo: {
-  //   width: 50,
-  //   height: 50,
-  // },
   inputContainer: {
     width: '40%',
     alignItems: 'center',
     padding: '50px',
     borderRadius: '10px',
     borderWidth: '1px',
-    opacity: '0.8',
-  
-    
+    opacity: '0.8', 
   },
   titleInput:{
     textAlign: 'left',
     width: '100%',
     marginLeft: '50%',
-    fontWeight: 'bold',
-    
+    fontWeight: 'bold',  
   },
-
   input: {
-    // backgroundColor: 'white',
-    // paddingHorizontal: 15,
-    // paddingVertical: 10,
-    // borderRadius: 10,
-    // marginTop: 5,
     height: 40,
     margin: 12,
     borderWidth: 1,
@@ -179,7 +156,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 40,
-    //marginVertical: '50',
   },
   button: {
     backgroundColor: '#0782F9',

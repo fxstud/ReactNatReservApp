@@ -43,14 +43,10 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
         setFirstname("")
         setLastname("")
         setEmail("")
-        setPhone("")
-        
+        setPhone("")      
     }
 }
-
   return (
-  
-
     <ImageBackground source={require('../assets/images/Salle-de-soins-dentaires.png')} resizeMode="cover" style={styles.image}>
     <KeyboardAvoidingView style={styles.container} behavior="padding">
     <View style={styles.inputContainer}>
@@ -110,7 +106,6 @@ export default function InscriptionScreen({ navigation }: RootStackScreenProps<'
           </TouchableOpacity>
           </View>
       </View>
-
     </KeyboardAvoidingView>
     </ImageBackground>
   );
@@ -163,7 +158,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 40,
-    //marginVertical: '50',
   },
   button: {
     backgroundColor: '#0782F9',

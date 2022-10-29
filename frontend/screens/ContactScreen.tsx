@@ -6,7 +6,7 @@ import { Text, View } from '../components/Themed';
 import { RootStackScreenProps, RootTabScreenProps } from '../types';
 import 'react-native-gesture-handler';
 import React from 'react';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+//import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 export default function ContactScreen({ navigation }: RootTabScreenProps<'Contact'>) {
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     marginRight: 10
  },
  balloon: {
-    maxWidth: scale(250),
+    //maxWidth: scale(250),
     paddingHorizontal: 15,
     paddingTop: 10,
     paddingBottom: 15,
@@ -102,7 +102,7 @@ labelText: {
   flex:1
 },
 button:{
-  backgroundColor: Colors.light.tint,
+  //backgroundColor: Colors.light.tint,
   padding:10,
   marginTop:20
 },
@@ -112,39 +112,6 @@ buttonText:{
 }
 });
 
-function scale(arg0: number): any | string | number | undefined {
-  throw new Error('Function not implemented.');
-}
-
-import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-import { RootStackScreenProps, RootTabScreenProps } from '../types';
-
-export default function ContactScreen({ navigation }: RootTabScreenProps<'Contact'>) {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Liste de contact (à implémenter par la suite)</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
+//function scale(arg0: number): any | string | number | undefined {
+ // throw new Error('Function not implemented.');
+//}

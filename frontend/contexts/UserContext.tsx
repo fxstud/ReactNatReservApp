@@ -2,13 +2,14 @@ import React from 'react';
 
 // Declaring the state object globally.
 const initialUserState = {
-  token: "azertjgodifsq",//localStorage.getItem("token"),
+  token: localStorage.getItem("token"), //"guiguiu",
   refeshToken: localStorage.getItem("refeshToken"),
+  //token: "",
 };
 
 const userContextWrapper = (component?: React.Component) => ({
   ...initialUserState,
-  setTokens: (token: string, refeshToken: string) => {
+  setTokens: (token: string , refeshToken: string ) => {
     initialUserState.token = token;
     initialUserState.refeshToken = refeshToken;
     localStorage.setItem("token", token)

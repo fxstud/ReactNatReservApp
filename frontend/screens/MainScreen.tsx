@@ -63,7 +63,7 @@ export default function MainScreen({ navigation }: RootStackScreenProps<'Main'>)
               <Text style={styles.imgtxt}>Comment consulter en toute simplicité ?   Ne perdez plus votre temps et inscrivez vous chez nous dans la joie et le bonheur</Text>
               </View>
             <TouchableOpacity
-              onPress={()=>{removeTokens()}}
+              onPress={()=>{removeTokens();navigation.navigate("Login")}}
               style={styles.button}
             >
               <Text style={styles.buttonText}>Sign Out</Text>          
